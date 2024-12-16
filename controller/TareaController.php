@@ -66,7 +66,7 @@
                         if ($this->tareaModel->createTarea($Tarea_name)) {
                             print json_encode([
                                     "contenedor"=>$this->refresh(),
-                                    "mensaje"=>"Tarea eliminada exitosamente",
+                                    "mensaje"=>"Tarea creada exitosamente",
                                     "code"=>1]);
                         } 
                     } else {
