@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interfaz con CSS</title>
+    <title>Terra_Energy</title>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
 </head>
 <body>
@@ -58,7 +58,6 @@
             </div>
         </div>
     </div>
-
     <div class="modal" id="modalCreate">
         <div class="modal-content">
             <h3>Crear tarea</h3>

@@ -3,11 +3,11 @@ require 'config/database.php';
 class Tarea
     {        
         private $db;
-        Public $key;
+        private $key;
         public function __construct()
         {
             $database = (new Database())->conectar();
-            $this->db =  $database["pdo"];
+            $this->db =  $database["db"];
             $this->key = $database["key_token"];
         }
         public function getKey() {

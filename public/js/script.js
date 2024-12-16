@@ -33,7 +33,7 @@ $(function() {
     });
     $(document).on('keyup', '#load', function(){
     var busqueda = $(this).val();
-    if( busqueda.length>3 || busqueda==''){
+    if( busqueda.length>1 || busqueda==''){
         $.ajax({
         url: 'search/',
         type: 'POST',
@@ -154,10 +154,12 @@ $.ajax({
 });
 });
 $("#createTareas").click(function() {
+    $("#Ctarea").val("");
     $('#modalCreate').css('display', 'flex');
 });
 
 $(".create_button").click(function() {
+   
     $.ajax({
         url: 'create/',
         type: 'POST',

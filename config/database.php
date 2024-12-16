@@ -1,36 +1,23 @@
 <?php
     class Database
     {
-        private $hostname;
-        private $database;
-        private $username;
-        private $password;
-        private $charset;
-        protected $key_token;
+        private $config;
+        protected $api;
         public function __construct()
         {
-            $config = parse_ini_file('config.ini', true);
-            $this->hostname = $config['database']['hostname'];
-            $this->database = $config['database']['database'];
-            $this->username = $config['database']['username'];
-            $this->password = $config['database']['password'];
-            $this->charset = $config['database']['charset'];
-            $this->key_token = $config['api']['key_token'];
+            $read = parse_ini_file('config.ini', true);
+            $this->config = $read['database'];           
+            $this->api = $read['api']['key_token'];
         }
         public function conectar()
         {
-            try {
-                $conexion = "mysql:host=" . $this->hostname . ";dbname=" . $this->database . ";charset=" . $this->charset;
-                $options = [
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_EMULATE_PREPARES => false,
-                ];
-
-                $pdo = new PDO($conexion, $this->username, $this->password, $options);
-
+            try {              
+                $db = new PDO("mysql:host=".$this->config["hostname"].";dbname=".$this->config["database"].";",
+                                $this->config["username"], $this->config["password"],
+                                [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
                return [
-                    'pdo' => $pdo,
-                    'key_token' => $this->key_token
+                    'db' => $db,
+                    'key_token' => $this->api
                 ];
             } catch (PDOException $e) {
                 echo 'Error de conexión: ' . $e->getMessage();
